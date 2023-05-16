@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{gauss}
+\usepackage{cancel}
+\usepackage{nicematrix}
+\usepackage{derivative}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{filecontents}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={190mm,280mm},
+ left=15mm,
+ right=15mm,
+ top=15mm,
+ bottom=15mm
+ }
+\allowdisplaybreaks
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  breaklines=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\color{red}$\hookrightarrow$\space}
+  language=s
+}
+
+\title{MZB125 Week 10}
+\author{BallsBoy}
+\date{March 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Question 8}
+\begin{flalign*}
+    r(z) &= \frac{(z+5)^3}{300}, z\in [0, 1]\\
+    r &= \frac{(z+5)^3}{300}\\
+    300r &= (z+5)^{3}\\
+    \sqrt[3]{300r} &= z+5\\
+    \sqrt[3]{300r} - 5 &= z\\
+    z(r) &= \sqrt[3]{300r} - 5 r\in\bigg[r(0), r(1)\bigg]\\
+    z(r) &= \sqrt[3]{300r} - 5 r\in\bigg[\frac{5}{12}, \frac{18}{25}\bigg]\\
+\end{flalign*}
+    \subsection*{How much soil can the pot hold}
+    V = $\int^{\infty}_{-\infty}A(z)dz \to \int^{\infty}_{-\infty}\pi r^{2}dz \to \pi \int^{\infty}_{-\infty} z(r)^{2} dr \therefore$
+    \begin{flalign*}
+        V &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} z(r)^{2} dr\\
+        &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} \bigg(\sqrt[3]{300r}-5\bigg)^{2} dr\\
+        &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} \bigg((300r)^{\frac{2}{3}}-10(300r)^{\frac{1}{3}}+25\bigg) dr\\
+        &= \pi \bigg[300^{\frac{2}{3}}\times\frac{3}{5}r^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3r^{\frac{4}{3}}}{4}+25r\bigg]^{\frac{18}{12}}_{\frac{5}{12}}\\
+        &= \pi \bigg[\bigg(300^{\frac{2}{3}}\times\frac{3}{5}\times\frac{18}{12}^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3\times\frac{18}{12}^{\frac{4}{3}}}{4}+25\times\frac{18}{12}\bigg) - \bigg(300^{\frac{2}{3}}\times\frac{3}{5}\times\frac{5}{12}^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3\times\frac{5}{12}^{\frac{4}{3}}}{4}+25\times\frac{5}{12}\bigg)\bigg]\\
+        &\simeq 9.74\text{m}^{3}
+    \end{flalign*}
+    \newpage
+    \subsection*{How much paint is needed to coat the exterior of the pot including the bottom? A litre of paint covers 1m$^{2}$}
+    \begin{flalign*}
+        S &= 2\pi\int^{\infty}_{-\infty}z(r)\sqrt{1+\frac{\text{dz}}{\text{dr}}^{2}} dz\\
+        &= 2\pi\int^{\frac{18}{12}}_{\frac{5}{12}}  dr\\
+    \end{flalign*}
+\end{document}
