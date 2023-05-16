@@ -43,30 +43,46 @@
 
 \maketitle
 
-\section{Question 8}
+\section*{Question 8}
 \begin{flalign*}
     r(z) &= \frac{(z+5)^3}{300}, z\in [0, 1]\\
-    r &= \frac{(z+5)^3}{300}\\
-    300r &= (z+5)^{3}\\
-    \sqrt[3]{300r} &= z+5\\
-    \sqrt[3]{300r} - 5 &= z\\
-    z(r) &= \sqrt[3]{300r} - 5 r\in\bigg[r(0), r(1)\bigg]\\
-    z(r) &= \sqrt[3]{300r} - 5 r\in\bigg[\frac{5}{12}, \frac{18}{25}\bigg]\\
+    \therefore \odv{r}{z} &= \odv{}{z} \bigg(\frac{(z+5)^3}{300}\bigg)\\
+    &= \frac{(z+5)^2}{900}
 \end{flalign*}
     \subsection*{How much soil can the pot hold}
-    V = $\int^{\infty}_{-\infty}A(z)dz \to \int^{\infty}_{-\infty}\pi r^{2}dz \to \pi \int^{\infty}_{-\infty} z(r)^{2} dr \therefore$
+    V = $\int^{\infty}_{-\infty}A(z)dz \to \int^{\infty}_{-\infty}\pi r^{2}dz \to \pi \int^{\infty}_{-\infty} r(z)^{2} dz \therefore$
     \begin{flalign*}
-        V &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} z(r)^{2} dr\\
-        &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} \bigg(\sqrt[3]{300r}-5\bigg)^{2} dr\\
-        &= \pi \int^{\frac{18}{12}}_{\frac{5}{12}} \bigg((300r)^{\frac{2}{3}}-10(300r)^{\frac{1}{3}}+25\bigg) dr\\
-        &= \pi \bigg[300^{\frac{2}{3}}\times\frac{3}{5}r^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3r^{\frac{4}{3}}}{4}+25r\bigg]^{\frac{18}{12}}_{\frac{5}{12}}\\
-        &= \pi \bigg[\bigg(300^{\frac{2}{3}}\times\frac{3}{5}\times\frac{18}{12}^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3\times\frac{18}{12}^{\frac{4}{3}}}{4}+25\times\frac{18}{12}\bigg) - \bigg(300^{\frac{2}{3}}\times\frac{3}{5}\times\frac{5}{12}^{\frac{5}{3}}-10\times300^{\frac{1}{3}}\times\frac{3\times\frac{5}{12}^{\frac{4}{3}}}{4}+25\times\frac{5}{12}\bigg)\bigg]\\
-        &\simeq 9.74\text{m}^{3}
+        V &= \pi \int^{1}_{0} r(z)^{2} dz\\
+        &= \pi \int^{1}_{0} \bigg(\frac{(z+5)^3}{300}\bigg)^{2} dz\\
+        &= \pi \int^{1}_{0} \frac{(z+5)^6}{300^{2}} dz\\
+        &= \frac{\pi}{90000} \bigg[\frac{(z+5)^{7}}{7}\bigg]^{1}_{0}\\
+        &= \frac{\pi}{90000} \bigg[\frac{6^7-5^7}{7}\bigg]\\
+        &= \frac{\pi}{90000} \times \frac{201811}{7}\\
+        &= \frac{201811\pi }{630000}\text{m}^{3} \simeq 1.00636 \text{m}^{3}
     \end{flalign*}
     \newpage
     \subsection*{How much paint is needed to coat the exterior of the pot including the bottom? A litre of paint covers 1m$^{2}$}
-    \begin{flalign*}
-        S &= 2\pi\int^{\infty}_{-\infty}z(r)\sqrt{1+\frac{\text{dz}}{\text{dr}}^{2}} dz\\
-        &= 2\pi\int^{\frac{18}{12}}_{\frac{5}{12}}  dr\\
-    \end{flalign*}
+    \begin{align*}
+        S &= 2\pi\int^{\infty}_{-\infty}r(z)\sqrt{1+\frac{\text{dr}}{\text{dz}}^{2}} dz\\
+        &= 2\pi \int^{1}_{0} \frac{(z+5)^3}{300}\sqrt{1+\bigg(\frac{(z+5)^2}{900}\bigg)^2} dz\\
+        &= \frac{2\pi}{300} \int^{1}_{0} (z+5)^{3}\sqrt{1+\bigg(\frac{(z+5)^2}{900}\bigg)^2} dz\\
+        \text{Apply u-substitution, let:}\\
+        u = z+5 && u(1) = 1+5\\
+        \odv{u}{z} = 1 && = 6\phantom{34-}\\
+        \text{d}u = \text{d}z && u(0) = 0+5\\
+        && 5\phantom{34-}\\
+        &= \frac{2\pi}{300} \int^{6}_{5} u^{3}\sqrt{1+\frac{u^4}{900^{2}}} dz\\
+        &= \frac{2\pi}{300} \int^{6}_{5} u^{3}\times\frac{1}{900}\sqrt{u^4+810000}dz\\
+        &= \frac{2\pi}{270000} \int^{6}_{5} u^{3}\times\sqrt{u^4+810000}dz\\
+        \text{Apply v-substitution, let:}\\
+        v = u^{4}+810000 && v(6) = 6^4+810000\\
+        \odv{v}{z} = 4u^{3} && = 811296\phantom{fw-}\\
+        \frac{1}{4}\text{d}v =  u^{3}\text{d}z && v(5) = 5^4+810000\\
+        && = 810625\phantom{fw-}\\
+        &= \frac{2\pi}{270000} \int^{811296}_{810625} \sqrt{v}\cancelto{\frac{1}{4}dv}{u^{3}dz}\\
+        &= \frac{2\pi}{1080000} \int^{811296}_{810625} v^{\frac{1}{2}} dv\\
+        &= \frac{2\pi}{1080000} \bigg[\frac{2}{3}v^{\frac{3}{2}}\bigg]^{811296}_{810625}\\
+        &= \frac{\pi }{810000}\bigg[811296^{\frac{3}{2}}-810625^{\frac{3}{2}}\bigg]\\
+        &\simeq 3.51543\text{m}^{2} \text{ (needs 4 buckets of paint)}
+\end{align*}
 \end{document}
