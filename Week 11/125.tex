@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{gauss}
+\usepackage{cancel}
+\usepackage{nicematrix}
+\usepackage{derivative}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{blindtext}
+\usepackage{filecontents}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={190mm,280mm},
+ left=15mm,
+ right=15mm,
+ top=15mm,
+ bottom=15mm
+ }
+\allowdisplaybreaks
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  breaklines=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\color{red}$\hookrightarrow$\space}
+  language=s
+}
+
+\title{MZB125 Week 11}
+\author{BallsBoy}
+\date{March 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Question 9}
+\begin{align*}
+    z_{1} = 3+3i && z_{2} = 4-4i\\
+\end{align*}
+\begin{minipage}{0.48\linewidth}
+    \begin{flalign*}
+        \frac{1}{z_{1}} &= \frac{\tilde{z_{1}}}{|z_{1}|^{2}}\\
+        &= \frac{3-3i}{(\sqrt{3^{2}+3^{2}})^{2}}\\
+        &= \frac{3-3i}{3^{2}+3^{2}}\\
+        &= \frac{3}{18} - \frac{3}{18}i\\
+        &= \frac{1}{6} - \frac{1}{6}i
+    \end{flalign*}
+\end{minipage}
+\begin{minipage}{0.48\linewidth}
+    \begin{flalign*}
+        \frac{1}{z_{2}} &= \frac{\tilde{z_{2}}}{|z_{2}|^{2}}\\
+        &= \frac{4+4i}{(\sqrt{4^{2} + (-4)^{2}})^{2}}\\
+        &= \frac{4+4i}{16+16}\\
+        &= \frac{4}{32}+\frac{4}{32}i\\
+        &= \frac{1}{8}+\frac{1}{8}i
+    \end{flalign*}
+\end{minipage}
+\begin{flalign*}
+    \frac{1}{z} &= \frac{1}{z_{1}}+\frac{1}{z_{2}}\\
+    &= \bigg(\frac{1}{6} - \frac{1}{6}i\bigg) + \bigg(\frac{1}{8}+\frac{1}{8}i\bigg)\\
+    &= \bigg(\frac{1}{6}+\frac{1}{8}\bigg) + \bigg(\frac{1}{8}-\frac{1}{6}\bigg)i\\
+    &= \bigg(\frac{8}{48}+\frac{6}{48}\bigg) + \bigg(\frac{6}{48}-\frac{8}{48}\bigg)i\\
+    &= \frac{14}{48} - \frac{2}{48}i\\
+    &= \frac{7}{24} - \frac{1}{24}i
+\end{flalign*}
+\begin{flalign*}
+    \frac{1}{\frac{1}{z}} = \frac{\tilde{\frac{1}{z}}}{|\frac{1}{z}|^{2}} = z
+\end{flalign*}
+\begin{flalign*}
+    \therefore z &= \frac{\frac{7}{24} + \frac{1}{24}i}{(\sqrt{\frac{7}{24}^{2} + \frac{1}{24}^{2}})^{2}}\\
+    &= \frac{\frac{7}{24} + \frac{1}{24}i}{\frac{49}{576} + \frac{1}{576}}\\
+    &= \frac{\frac{7}{24} + \frac{1}{24}i}{\frac{50}{576}}\\
+    &= \frac{288}{25}\bigg(\frac{7}{24}+\frac{1}{24}i\bigg)\\
+    &= \frac{12}{25}\bigg(7+i\bigg)\\
+    &= \frac{84}{25}+\frac{12}{25}i\\
+    \therefore |z| &= \sqrt{\frac{84}{25}^{2}+\frac{1}{25}^{2}} = \frac{12\sqrt{2}}{5}\\
+    \tan(\theta) &= \frac{\frac{84}{25}}{\frac{1}{25}}\\
+    &= 84\\
+    \theta &= \arctan(84)\\
+    &\approx 1.559
+\end{flalign*}
+\end{document}
